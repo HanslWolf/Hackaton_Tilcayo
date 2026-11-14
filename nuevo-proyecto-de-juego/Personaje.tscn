@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b54fiaetk82d1"]
+
+[ext_resource type="Texture2D" uid="uid://2uwrgbwbi0oe" path="res://Personaje1/Tilcayo.webp" id="1_s7vd6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a12xa"]
+
+[node name="Node2D" type="Node2D" unique_id=1850119982]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1916460488]
+
+[node name="Tilcayo" type="AnimatedSprite2D" parent="CharacterBody2D" unique_id=1866276]
+sprite_frames = SubResource("SpriteFrames_a12xa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=842462012]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=755823063]
+
+[node name="Tilcayo2" type="Sprite2D" parent="CharacterBody2D" unique_id=1662995609]
+position = Vector2(0, 2)
+texture = ExtResource("1_s7vd6")
