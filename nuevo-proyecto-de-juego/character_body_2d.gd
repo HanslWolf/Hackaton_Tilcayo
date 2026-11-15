@@ -1,101 +1,109 @@
 extends CharacterBody2D
 
-@export var walk_speed: float = 200.0
-@export var run_speed: float = 350.0
-@export var double_tap_window: float = 0.25 # Tiempo máximo (en segundos) entre dos pulsaciones para correr
+const WALK_SPEED := 200.0
+const RUN_SPEED := 350.0
+const DOUBLE_TAP_WINDOW := 0.25
+
+# Pon true si al caminar a la izquierda el muñeco se ve mirando a la derecha
+const MIRROR_LEFT := false
+
+const LEFT_KEYS := [KEY_A, KEY_LEFT]
+const RIGHT_KEYS := [KEY_D, KEY_RIGHT]
+const UP_KEYS := [KEY_W, KEY_UP]
+const DOWN_KEYS := [KEY_S, KEY_DOWN]
+const MOVE_KEYS := [KEY_A, KEY_LEFT, KEY_D, KEY_RIGHT, KEY_W, KEY_UP, KEY_S, KEY_DOWN]
+
+const IDLE := {"down": "idle_d", "up": "idle_u", "right": "idle_r", "left": "idle_l"}
+const WALK := {"down": "walk_down", "up": "walk_up", "right": "walk_right", "left": "walk_left"}
+const RUN := {"down": "run_d", "up": "run_u", "right": "run_r", "left": "run_l"}
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-#@onready var interaction_area: Area2D = $InteractionArea
 
 var last_direction: String = "down"
 var interactable_in_range: Node2D = null
 
-# Variables para detectar doble pulsación
 var is_running: bool = false
-var last_tap_action: String = ""
+var last_tap_key: int = 0
 var last_tap_time: float = 0.0
 
-#func _ready() -> void:
-#	interaction_area.area_entered.connect(_on_area_entered)
-#	interaction_area.area_exited.connect(_on_area_exited)
+
+func _ready() -> void:
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	# Sin colisiones por ahora: el mapa aún no las tiene y nada debe frenarlo
+	collision_layer = 0
+	collision_mask = 0
+	print("Personaje listo en: ", global_position)
+
 
 func _physics_process(_delta: float) -> void:
-	var direction := Input.get_vector("vi_left", "vi_right", "vi_up", "vi_down")
-	
+	var direction := _get_input_direction()
+
 	if direction == Vector2.ZERO:
 		is_running = false
-		
-	var current_speed := run_speed if is_running else walk_speed
-	velocity = direction * current_speed
+
+	velocity = direction * (RUN_SPEED if is_running else WALK_SPEED)
 	move_and_slide()
-	
 	update_animation(direction)
 
+
+func _get_input_direction() -> Vector2:
+	var x := int(_any_pressed(RIGHT_KEYS)) - int(_any_pressed(LEFT_KEYS))
+	var y := int(_any_pressed(DOWN_KEYS)) - int(_any_pressed(UP_KEYS))
+	return Vector2(x, y).normalized()
+
+
+func _any_pressed(keys: Array) -> bool:
+	for k in keys:
+		if Input.is_physical_key_pressed(k):
+			return true
+	return false
+
+
 func _unhandled_input(event: InputEvent) -> void:
-
-	for action in ["vi_left", "vi_right", "vi_up", "vi_down"]:
-		if event.is_action_pressed(action) and not event.is_echo():
-			var current_time := Time.get_ticks_msec() / 1000.0
-			if action == last_tap_action and (current_time - last_tap_time) <= double_tap_window:
+	# Doble toque sobre una misma tecla de movimiento = correr
+	if event is InputEventKey and event.pressed and not event.echo:
+		var key: int = event.physical_keycode
+		if key in MOVE_KEYS:
+			var now := Time.get_ticks_msec() / 1000.0
+			if key == last_tap_key and (now - last_tap_time) <= DOUBLE_TAP_WINDOW:
 				is_running = true
-			last_tap_action = action
-			last_tap_time = current_time
+			last_tap_key = key
+			last_tap_time = now
 
-	if event.is_action_pressed("interact") and interactable_in_range != null:
-		if interactable_in_range.has_method("interact"):
+	if InputMap.has_action("interact") and event.is_action_pressed("interact"):
+		if interactable_in_range != null and interactable_in_range.has_method("interact"):
 			interactable_in_range.interact()
 
+
 func update_animation(direction: Vector2) -> void:
-	
+	if direction != Vector2.ZERO:
+		if abs(direction.x) > abs(direction.y):
+			last_direction = "right" if direction.x > 0 else "left"
+		else:
+			last_direction = "down" if direction.y > 0 else "up"
+
+	anim.flip_h = MIRROR_LEFT and last_direction == "left"
+
 	if direction == Vector2.ZERO:
-		match last_direction:
-			"down":
-				anim.flip_h = false
-				anim.play("idle_d")
-			"up":
-				anim.flip_h = false
-				anim.play("idle_u")
-			"right":
-				anim.flip_h = false
-				anim.play("idle_r")
-			"left":
-				anim.flip_h = true
-				anim.play("idle_l")
-		return
+		_play(IDLE[last_direction])
+	elif is_running:
+		_play(RUN[last_direction])
+	else:
+		_play(WALK[last_direction])
 
 
-	if abs(direction.x) > abs(direction.y):
-		if direction.x > 0:
-			last_direction = "right"
-			anim.flip_h = false
-		else:
-			last_direction = "left"
-			anim.flip_h = true
-	else:
-		anim.flip_h = false
-		last_direction = "down" if direction.y > 0 else "up"
-			
-	if is_running:
-		match last_direction:
-			"down":
-				anim.play("run_d")
-			"up":
-				anim.play("run_u")
-			"right":
-				anim.play("run_r")
-			"left":
-				anim.play("run_l")
-	else:
-		if last_direction == "left":
-			anim.play("walk_right")
-		else:
-			anim.play("walk_" + last_direction)
+func _play(anim_name: String) -> void:
+	if anim.sprite_frames and anim.sprite_frames.has_animation(anim_name):
+		if anim.animation != anim_name or not anim.is_playing():
+			anim.play(anim_name)
+
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("interactables"):
 		interactable_in_range = area
 		if area.has_method("show_prompt"):
 			area.show_prompt(true)
+
 
 func _on_area_exited(area: Area2D) -> void:
 	if area == interactable_in_range:

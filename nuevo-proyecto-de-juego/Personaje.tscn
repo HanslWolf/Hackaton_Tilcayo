@@ -465,8 +465,7 @@ animations = [{
 radius = 0.5168066
 height = 6.2278743
 
-[node name="Node2D" type="Node2D" unique_id=1850119982]
-position = Vector2(274, 223)
+[node name="Personaje" type="Node2D" unique_id=1850119982]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1916460488]
 script = ExtResource("1_w730s")
@@ -488,6 +487,7 @@ disabled = true
 zoom = Vector2(5, 5)
 
 [node name="HUB" type="CanvasLayer" parent="." unique_id=294348921]
+visible = false
 
 [node name="tiempoLabel" type="Label" parent="HUB" unique_id=1288100031]
 offset_left = 167.0
@@ -495,12 +495,15 @@ offset_top = 160.0
 offset_right = 296.0
 offset_bottom = 183.0
 text = "Tiempo"
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelGameOver" type="ColorRect" parent="HUB" unique_id=1529347423]
+visible = false
 offset_left = 294.0
 offset_top = 59.0
 offset_right = 395.0
 offset_bottom = 88.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="HUB/PanelGameOver" unique_id=194085305]
 layout_mode = 0
@@ -509,3 +512,4 @@ offset_top = 42.0
 offset_right = 98.0
 offset_bottom = 65.0
 text = "Game Over"
+metadata/_edit_use_anchors_ = true

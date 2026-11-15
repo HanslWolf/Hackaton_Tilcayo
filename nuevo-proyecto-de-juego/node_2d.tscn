@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://cmwdw8kgbef6b"]
 
 [ext_resource type="Texture2D" uid="uid://d4baiod7oeafc" path="res://Fondo/fondo.jpg" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://b54fiaetk82d1" path="res://Personaje.tscn" id="2_0e48y"]
 
 [node name="Node2D" type="Node2D" unique_id=2120505793]
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=124851907]
-position = Vector2(763, 455)
+scale = Vector2(0.72083336, 0.7745536)
 texture = ExtResource("1_wtcfe")
+
+[node name="Personaje" parent="." unique_id=1850119982 instance=ExtResource("2_0e48y")]
+position = Vector2(175.00003, 173.00002)
+scale = Vector2(0.99999994, 0.99999994)
