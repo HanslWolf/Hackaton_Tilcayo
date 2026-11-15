@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2uwrgbwbi0oe"
-path="res://.godot/imported/Tilcayo.webp-f42d408d2d3557c81f43d57a0bf1d8e4.ctex"
+uid="uid://cb5sorxhgwxsl"
+path="res://.godot/imported/Pixelart Study - Expression Sheet - Profile - 16x32 - ver2.png-6bcd2d1c2eddfaa5b2b8ab28f1306aa9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Personaje1/Tilcayo.webp"
-dest_files=["res://.godot/imported/Tilcayo.webp-f42d408d2d3557c81f43d57a0bf1d8e4.ctex"]
+source_file="res://Personaje1/Pixelart Study - Expression Sheet - Profile - 16x32 - ver2.png"
+dest_files=["res://.godot/imported/Pixelart Study - Expression Sheet - Profile - 16x32 - ver2.png-6bcd2d1c2eddfaa5b2b8ab28f1306aa9.ctex"]
 
 [params]
 
