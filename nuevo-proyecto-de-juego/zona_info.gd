@@ -1,7 +1,7 @@
 extends Area2D
 
-@export var zona_id: String = "alimentos"
-@export var titulo: String = "Producción de alimentos"
+@export var zona_id: String = ""
+@export var titulo: String = ""
 
 # Pega aquí tus datos de la NASA, uno por sala
 const DATOS := {

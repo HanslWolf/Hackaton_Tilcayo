@@ -551,6 +551,7 @@ shape = SubResource("CircleShape2D_hfppl")
 
 [node name="Area2D" type="Area2D" parent="Zonas" unique_id=649247661]
 script = ExtResource("2_epypp")
+zona_id = "alimentos"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Zonas/Area2D" unique_id=1618334841]
 position = Vector2(279, 311)
@@ -558,6 +559,7 @@ shape = SubResource("CircleShape2D_sl1fl")
 
 [node name="Area2D2" type="Area2D" parent="Zonas" unique_id=1787315940]
 script = ExtResource("2_epypp")
+zona_id = "comunicaciones"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Zonas/Area2D2" unique_id=756633848]
 position = Vector2(349, 176)
@@ -565,6 +567,7 @@ shape = SubResource("CircleShape2D_sl1fl")
 
 [node name="Area2D3" type="Area2D" parent="Zonas" unique_id=1971286537]
 script = ExtResource("2_epypp")
+zona_id = "centro_mando"
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Zonas/Area2D3" unique_id=1651292916]
 position = Vector2(120, 117)
@@ -572,6 +575,7 @@ shape = SubResource("CircleShape2D_sl1fl")
 
 [node name="Area2D4" type="Area2D" parent="Zonas" unique_id=1073151922]
 script = ExtResource("2_epypp")
+zona_id = "geologia"
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Zonas/Area2D4" unique_id=1568282783]
 position = Vector2(190, -10)
@@ -579,6 +583,7 @@ shape = SubResource("CircleShape2D_sl1fl")
 
 [node name="Area2D5" type="Area2D" parent="Zonas" unique_id=525530658]
 script = ExtResource("2_epypp")
+zona_id = "soporte_vital"
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Zonas/Area2D5" unique_id=2049307668]
 position = Vector2(-45, 165)
