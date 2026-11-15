@@ -4,26 +4,41 @@
 [ext_resource type="PackedScene" uid="uid://b54fiaetk82d1" path="res://Personaje.tscn" id="2_0e48y"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_so2o6"]
-a = Vector2(-152, 177.00002)
-b = Vector2(-154.00002, 151.00003)
+a = Vector2(-137, 207.00003)
+b = Vector2(-155.00002, 147.00003)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_so2o6"]
 size = Vector2(77.5336, 41.587227)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1jql7"]
-size = Vector2(95.28637, 34.49956)
+size = Vector2(111.5435, 32.794975)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u5id"]
-size = Vector2(117.00002, 76.000244)
+size = Vector2(112.000015, 66.99997)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfppl"]
-size = Vector2(64.99997, 106)
+size = Vector2(64.99997, 109.02549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7e6ay"]
 size = Vector2(213.26862, 62.69114)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sl1fl"]
 size = Vector2(80.16305, 97.15451)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c6tt"]
+size = Vector2(31.758095, 121.02889)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_7e6ay"]
+a = Vector2(33.999985, 160.00002)
+b = Vector2(-7.0000153, 12.000015)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_1jql7"]
+a = Vector2(45.04744, 206.71655)
+b = Vector2(58.796265, 277.82187)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4u5id"]
+a = Vector2(-112.99994, -37.99997)
+b = Vector2(-99.99994, 2.0000305)
 
 [node name="Node2D" type="Node2D" unique_id=2120505793]
 
@@ -40,7 +55,7 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="StaticBody2D" type="StaticBody2D" parent="Paredes" unique_id=1666337449]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=261765459]
-position = Vector2(306, 144)
+position = Vector2(342, 172)
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("SegmentShape2D_so2o6")
 
@@ -51,20 +66,20 @@ scale = Vector2(0.99999946, 0.99999946)
 shape = SubResource("RectangleShape2D_so2o6")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=569376583]
-position = Vector2(165.5461, 370.07367)
-rotation = 1.3219134
-scale = Vector2(0.9999996, 0.9999996)
+position = Vector2(167.26826, 379.0665)
+rotation = 1.2922885
+scale = Vector2(0.99999917, 0.99999917)
 shape = SubResource("RectangleShape2D_1jql7")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=2029328455]
-position = Vector2(-41.500015, 292.99988)
-scale = Vector2(0.99999964, 0.99999964)
+position = Vector2(-44.00001, 297.49994)
+scale = Vector2(0.9999996, 0.9999996)
 shape = SubResource("RectangleShape2D_4u5id")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=158458012]
-position = Vector2(-121.000046, 176.00002)
+position = Vector2(-120.49613, 177.42633)
 rotation = -0.3395941
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_hfppl")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1036345312]
@@ -78,6 +93,30 @@ position = Vector2(284.88107, 442.91043)
 rotation = 1.5879847
 scale = Vector2(0.99999964, 0.99999964)
 shape = SubResource("RectangleShape2D_sl1fl")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1005978869]
+position = Vector2(260.3894, 347.75143)
+rotation = 1.6313723
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_3c6tt")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=747205118]
+position = Vector2(15.999985, 256)
+shape = SubResource("SegmentShape2D_7e6ay")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1526682003]
+position = Vector2(87.99998, 30.000008)
+rotation = -0.11764921
+shape = SubResource("SegmentShape2D_1jql7")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1649181341]
+position = Vector2(161.99998, 219.00002)
+shape = SubResource("SegmentShape2D_4u5id")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1723968026]
+position = Vector2(323.99994, 438)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("SegmentShape2D_4u5id")
 
 [node name="Personaje" parent="." unique_id=1850119982 instance=ExtResource("2_0e48y")]
 position = Vector2(175.00003, 173.00002)
