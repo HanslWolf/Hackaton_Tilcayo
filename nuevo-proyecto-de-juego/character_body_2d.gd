@@ -5,7 +5,7 @@ const RUN_SPEED := 350.0
 const DOUBLE_TAP_WINDOW := 0.25
 
 # Pon true si al caminar a la izquierda el muñeco se ve mirando a la derecha
-const MIRROR_LEFT := false
+const MIRROR_LEFT := true
 
 const LEFT_KEYS := [KEY_A, KEY_LEFT]
 const RIGHT_KEYS := [KEY_D, KEY_RIGHT]
