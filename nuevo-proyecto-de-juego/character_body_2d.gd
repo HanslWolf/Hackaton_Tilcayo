@@ -30,9 +30,11 @@ var last_tap_time: float = 0.0
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	# Sin colisiones por ahora: el mapa aún no las tiene y nada debe frenarlo
-	collision_layer = 0
-	collision_mask = 0
+	
 	print("Personaje listo en: ", global_position)
+	print("layer: ", collision_layer, " mask: ", collision_mask)
+	var cs: CollisionShape2D = $CollisionShape2D
+	print("shape: ", cs.shape, " disabled: ", cs.disabled)
 
 
 func _physics_process(_delta: float) -> void:
@@ -43,6 +45,8 @@ func _physics_process(_delta: float) -> void:
 
 	velocity = direction * (RUN_SPEED if is_running else WALK_SPEED)
 	move_and_slide()
+	if get_slide_collision_count() > 0:
+		print("choca con: ", get_slide_collision(0).get_collider().name)
 	update_animation(direction)
 
 
