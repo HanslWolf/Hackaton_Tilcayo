@@ -230,6 +230,18 @@ b = Vector2(1.9999771, 36.00006)
 a = Vector2(-30.999992, 45.00003)
 b = Vector2(39.000008, 44.00003)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_so2o6"]
+radius = 16.643291
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jql7"]
+radius = 15.0000305
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4u5id"]
+radius = 21.84033
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hfppl"]
+radius = 11.401762
+
 [node name="Node2D" type="Node2D" unique_id=2120505793]
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=124851907]
@@ -514,6 +526,22 @@ shape = SubResource("SegmentShape2D_c6sy5")
 [node name="CollisionShape2D64" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1212229780]
 position = Vector2(110.99997, 331)
 shape = SubResource("SegmentShape2D_c8ucw")
+
+[node name="CollisionShape2D65" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1402009044]
+position = Vector2(350.99997, 177)
+shape = SubResource("CircleShape2D_so2o6")
+
+[node name="CollisionShape2D66" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1972920245]
+position = Vector2(279, 311.00003)
+shape = SubResource("CircleShape2D_1jql7")
+
+[node name="CollisionShape2D67" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=28334846]
+position = Vector2(-46.000034, 166.00002)
+shape = SubResource("CircleShape2D_4u5id")
+
+[node name="CollisionShape2D68" type="CollisionShape2D" parent="Paredes/StaticBody2D" unique_id=1949376504]
+position = Vector2(187.99998, -10.999998)
+shape = SubResource("CircleShape2D_hfppl")
 
 [node name="Personaje" parent="." unique_id=1850119982 instance=ExtResource("2_0e48y")]
 position = Vector2(175.00003, 173.00002)
