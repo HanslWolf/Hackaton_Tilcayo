@@ -6,6 +6,7 @@
 [node name="Node2D" type="Node2D" unique_id=2120505793]
 
 [node name="Fondo" type="Sprite2D" parent="." unique_id=124851907]
+position = Vector2(446.99997, 339.99997)
 scale = Vector2(0.72083336, 0.7745536)
 texture = ExtResource("1_wtcfe")
 
